@@ -1,0 +1,30 @@
+<h2>User List</h2>
+  {% if users %}
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for user in users %}
+                  <tr>
+                      <td>{{ user.name }}</td>
+                      <td>{{ user.age }}</td>
+                      <td>
+                          <a href="{% url 'user_update' user.id %}">Edit</a>
+                          <form method="post" action="{% url 'user_delete' user.id %}" style="display:inline;">
+                              {% csrf_token %}
+                              <button type="submit">Delete</button>
+                          </form>
+                      </td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  {% else %}
+      <p>No users found.</p>
+  {% endif %}
+  <p><a href="{% url 'user_create' %}">Add New User</a></p>

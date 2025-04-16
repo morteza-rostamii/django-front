@@ -1,0 +1,9 @@
+<div class="user-card" style="border: 1px solid #ccc; padding: 10px; ">
+    <h3>{{ user.name }}</h3>
+    <p>Age: {{ user.age|add:1 }}</p> <!-- Example filter -->
+    {% if user.is_active %}
+        <span style="color: green;">Active</span>
+    {% else %}
+        <span style="color: red;">Inactive</span>
+    {% endif %}
+</div>

@@ -1,0 +1,15 @@
+
+{% extends 'core/layouts/core.layout.html' %}
+
+{% block title %}{{ title }} | Home{% endblock %}
+
+{% block content %}
+  <h1 style="background: orange;">{{ welcome_message }}</h1>
+
+  {% comment %} {% include 'core/components/users/_users-list.co.html' with users=users %} {% endcomment %}
+
+  {% comment %} 
+  include partials
+  Usage: {% include 'path/to/partial.html' %}.
+  {% endcomment %}
+{% endblock %}

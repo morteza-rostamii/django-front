@@ -1,0 +1,22 @@
+{# templates/partials/button.html #}
+
+{% if href %}
+    <a href="{{ href }}"
+       {% if size == "sm" %}class="btn btn-sm"{% endif %}
+       {% if size == "lg" %}class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 hover:cursor-pointer"{% endif %}
+       {% if id %}id="{{ id }}"{% endif %}
+       {% if target %}target="{{ target }}"{% endif %}
+       {% if disabled %}disabled{% endif %}
+    >
+        {{ text }}
+    </a>
+{% else %}
+    <button type="{{ type|default:'button' }}"
+            {% if size == "sm" %}class="btn btn-sm"{% endif %}
+            {% if size == "lg" %}class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 hover:cursor-pointer"{% endif %}
+            {% if id %}id="{{ id }}"{% endif %}
+            {% if disabled %}disabled{% endif %}
+    >
+        {{ text }}
+    </button>
+{% endif %}

@@ -1,0 +1,11 @@
+<!-- Delete Form -->
+<form 
+method="post" 
+action="{% url 'index-view' %}"
+style="display:inline;" 
+>
+  {% csrf_token %}
+  <input type="hidden" name="action" value="delete">
+  <input type="hidden" name="id" value="{{ task.id }}">
+  {% include 'todo/elements/_Button.html' with type='submit' text='Delete' size='sm' %}
+</form>

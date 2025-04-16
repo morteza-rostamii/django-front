@@ -1,0 +1,9 @@
+{% extends 'root.layout.html' %}
+
+{% block title %}{{ title }} | Home{% endblock %}
+{% block header_title %}{{ title }}{% endblock %}
+
+{% include 'core/components/_header.html' %}
+<main>{% block content %} {% endblock %}</main>
+{% include 'core/components/_footer.html' %}
+

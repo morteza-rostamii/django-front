@@ -1,0 +1,47 @@
+{% extends 'core/core.layout.html' %}
+
+{% block title %}
+    {% if is_edit %}
+    Edit User
+    {% else %}
+    Add User
+    {% endif %}
+{% endblock %}
+
+{% block header_title %}
+    {% if is_edit %}
+    Edit User
+    {% else %}
+    Add User
+    {% endif %}
+{% endblock %}
+
+{% block app_content %}
+    <h2>
+    {% if is_edit %}
+    Edit User
+    {% else %}
+    Create User
+    {% endif %}
+    </h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ user.name|default:'' }}" required>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ user.age|default:'' }}" required>
+        </div>
+        <button type="submit">
+            {% if is_edit %}
+                Update
+            {% else %}
+                Create
+            {% endif %}
+        </button>
+    </form>
+    <p><a href="{% url 'user_list' %}">Back to Users</a></p>
+{% endblock %}

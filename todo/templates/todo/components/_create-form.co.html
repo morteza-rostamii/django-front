@@ -1,0 +1,32 @@
+
+<div>
+
+  <h3 class="text-xl font-bold mb-2">Add Task</h3>
+  {% comment %} submits to /todo {% endcomment %}
+
+  <form 
+  method="post"
+  action="{% url 'index-view' %}"
+  class="#max-w-sm #mx-auto">
+    {% comment %} required for post {% endcomment %}
+    {% csrf_token %}
+
+    {% comment %} we use this to know what action to take: create or update {% endcomment %}
+    <input type="hidden" name="action" value="create">
+
+    <div class="mb-5">
+      {% include 'todo/elements/_Label.html' with title='title' for='title' %}
+      {% include 'todo/elements/_Input.html' with id='title' type='text' name='title' placeholder='Enter title' required=True autocomplete="off"%}
+    </div>
+    <div class="mb-5">
+      {% include 'todo/elements/_Label.html' with title='description' for='description' %}
+      {% include 'todo/elements/_Textarea.html' with id='description' name='description' placeholder='Enter description' required=True rows="6" placeholder="Enter description" %}
+    </div>
+    <div class="flex items-start mb-5 gap-2">
+      {% include 'todo/elements/_Checkbox.html' with id='completed' name='completed' %}
+      {% include 'todo/elements/_Label.html' with title='completed' for='completed' %}
+      
+    </div>
+    {% include 'todo/elements/_Button.html' with type='submit' text='Add Task' size='lg'%}
+  </form>
+</div>
