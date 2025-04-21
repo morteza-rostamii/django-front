@@ -1,10 +1,12 @@
 
 {% extends 'todo/layouts/todo.layout.html' %}
-
+{% load static %}
 {% block title %}{{ title }} | Home{% endblock %}
 
 {% block content %}
   <div class="container mx-auto grid place-content-center">
+
+    <img src="{% static 'todo/images/Logo.png' %}" alt="Logo" class="w-[200px]"/>
 
     <div class="mt-10 bg-blue-200 p-6 rounded-lg">
       {% comment %} {% include 'todo/elements/_Counter.html' %} {% endcomment %}

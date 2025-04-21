@@ -1,0 +1,23 @@
+{% extends 'todo/layouts/todo.layout.html' %}
+
+{% block title %}{{ title }} | Edit{% endblock %}
+
+{% block content %}
+  <h1>edit page</h1>
+
+  <!-- Edit Form (Inline) -->
+  <form 
+  method="post" 
+  action="{% url 'index-view' %}"
+  style="display:flex; 
+  flex-direction:column; gap: 10px">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="update">
+    
+    <input type="hidden" name="id" value="{{ task.id }}">
+    <input type="text" name="title" value="{{ task.title }}" required>
+    <textarea name="description">{{ task.description }}</textarea>
+    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
+    <button type="submit">Update</button>
+  </form>
+{% endblock %}

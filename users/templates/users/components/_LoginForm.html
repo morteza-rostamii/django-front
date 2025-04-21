@@ -1,0 +1,66 @@
+{% load static %}
+
+{% firstof form.email.errors|yesno:"ring-red-500 ring-2 form-input, form-input" as email_error_class %}
+{% firstof form.email.errors|yesno:"ring-red-500 ring-2 form-input, form-input" as password_error_class %}
+
+<div class="relative form-bg p-3 md:p-8 max-w-2xl #mx-auto min-w-full md:min-w-[500px] overflow-hidden z-0">
+
+  <h3 class="text-2xl font-bold mb-8 text-center">
+  ورود
+  </h3>
+  {% comment %} submits to /todo {% endcomment %}
+
+  <form 
+  method="post"
+  action="{% url 'users:login-view' %}"
+  class="flex flex-col gap-2"
+  novalidate
+  >
+    {% comment %} required for post {% endcomment %}
+    {% csrf_token %}
+
+    {% comment %} we use this to know what action to take: create or update {% endcomment %}
+    <input type="hidden" name="action" value="login">
+
+    <div class="mb-5 flex flex-col gap-2">
+      {% include 'elements/_Label.html' with title='ایمیل' for='email' %}
+      {% include 'elements/_Input.html' with id='email' type='email' name='email' placeholder='ایمیل را وارد کنید' required=True autocomplete="on" classes=email_error_class icon="user-2" value="{{ form.email.value }}"  %}
+
+      {% comment %} <div>{{form.email.errors}}</div> {% endcomment %}
+      {% if form.email.errors %}
+        {% for error in form.email.errors %}
+          <span class="text-red-500 text-sm">
+            {{ error }}
+          </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="mb-5 flex flex-col gap-2">
+      {% include 'elements/_Label.html' with title='رمز عبور' for='password' %}
+      {% include 'elements/_Input.html' with id='password' type='password' name='password' placeholder='رمز عبور را وارد کنید' required=True autocomplete="on" classes=password_error_class icon="user-2" value="{{ form.password.value }}"  %}
+
+      {% if form.password.errors %}
+        {% for error in form.password.errors %}
+          <span class="text-red-500 text-sm">
+            {{ error }}
+          </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    <div class="flex items-center gap-2 justify-between mb-3">
+      <div class="flex items-start gap-2">
+        {% include 'elements/_Checkbox.html' with id='remember' name='remember'  %}
+        {% include 'elements/_Label.html' with title='مرا به خاطر بسپار' for='remember' classes="mb-0" %}
+        
+      </div>
+      <a href="{% url 'users:forgot-password-view' %}"><span class="text-sm font-bold text-gray-300 hover:text-gray-400 hover:cursor-pointer">رمز عبور را فراموش کرده ام</span></a>
+    </div>
+    
+    {% include 'elements/_Button.html' with type='submit' text='وارد شوید' size='lg' classes="form-btn self-center"%}
+  </form>
+
+  {% comment %} background image {% endcomment %}
+  <img src="{% static 'users/images/auth-bg.png' %}" alt="auth-bg" class="absolute -top-1/2 left-0 right-0 -z-10" />
+</div>

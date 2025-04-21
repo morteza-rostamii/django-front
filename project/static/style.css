@@ -1,0 +1,66 @@
+:root {
+  font-family: "Almarai", sans-serif;
+}
+
+html,
+body {
+  font-family: "Almarai", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Frame 1890166018 */
+
+/* Auto layout */
+.form-bg {
+  background: rgba(1, 148, 254, 0.05);
+  border-radius: 8px;
+}
+/* Frame 1318046 */
+
+/* Auto layout */
+.form-input {
+  background: #151d37 !important;
+  border: 1px solid #2563eb !important;
+  border-radius: 6px;
+}
+
+/* Button animation */
+
+.form-btn {
+  background: #1a233e;
+  box-shadow: 0px 0px 6px #0075ff;
+  border-radius: 5px;
+}
+
+/* ************** dashboard first page ************** */
+
+.sidebar {
+  background: radial-gradient(
+      85.34% 47.14% at 100% 0%,
+      rgba(17, 99, 157, 0.3) 0%,
+      rgba(17, 99, 157, 0) 100%
+    ),
+    radial-gradient(
+      50% 28.35% at 0% 100%,
+      rgba(17, 99, 157, 0.3) 0%,
+      rgba(17, 99, 157, 0) 100%
+    ),
+    rgba(14, 13, 27, 0.04);
+  /* border-radius: 24px; */
+}
+
+/* sidemenu */
+
+.icon-bg {
+  /* Icon Container */
+
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  background: linear-gradient(180deg, #0d0d1a 50%, #1a375b 100%);
+  backdrop-filter: blur(1.77778px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 10.6667px;
+}

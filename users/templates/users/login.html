@@ -1,0 +1,11 @@
+{% extends "users/layouts/users.layout.html" %}
+
+{% comment %} title {% endcomment %}
+{% block title %}{{ title }} | Home{% endblock %}
+{% comment %} header_title {% endcomment %}
+{% block header_title %}{{ title }}{% endblock %}
+
+{% block auth_content %}
+  {% include 'users/components/_LoginForm.html' %}
+{% endblock %}
+

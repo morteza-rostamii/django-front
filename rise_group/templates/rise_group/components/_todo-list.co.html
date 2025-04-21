@@ -1,0 +1,16 @@
+
+<div>
+  <h2 class="text-2xl font-bold mb-2 mt-8">Tasks</h2>
+
+  <!-- Task List -->
+    
+    {% if tasks|length > 0 %}
+    {% include 'todo/elements/_Table.html' with tasks=tasks headers=headers %}
+
+    {% else %}
+    <p>No tasks found.</p>
+    {% endif %}
+
+
+    
+</div>

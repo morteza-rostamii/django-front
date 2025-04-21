@@ -1,0 +1,40 @@
+{% load static %}
+
+<div 
+class="w-full h-full p-4">
+
+  <div class="flex items-center gap-4 mb-4">
+    {% include 'elements/_Avatar.html' with src="" alt="" %}
+    <span>
+      {{ user.username|default:'مرتضی رستمی' }}
+    </span>
+  </div>
+
+  {% comment %} line {% endcomment %}
+  <div class="w-full h-[1px] bg-white1 my-4 mb-4"></div>
+
+  {% comment %} menu {% endcomment %}
+  
+  <ul class="!flex !flex-col gap-2 mb-8" x-data="Sidemenu()">
+    <template x-for="item in menu" >
+      {% include 'rise_group/components/_MenuItem.js.html' %}
+    </template>
+  </ul>
+
+  {% comment %} help {% endcomment %}
+  <div>
+    <img src="{% static 'rise_group/images/help-bg.png' %}" alt="help" class="w-full"/>
+  </div>
+</div>
+
+<script type="text/javascript" defer>
+  function Sidemenu() {
+    return {
+      menu: [
+        { icon: 'home-2', title: 'خانه', href: '#', size: 'text-2xl' },
+        { icon: 'user-2', title: 'کاربران', href: '#', size: 'text-2xl' },
+        { icon: 'setting-1', title: 'تنظیمات', href: '#', size: 'text-2xl' },
+      ],
+    }
+  }
+</script>

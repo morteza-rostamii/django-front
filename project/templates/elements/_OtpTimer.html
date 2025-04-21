@@ -1,0 +1,67 @@
+<div 
+x-data="countdownTimer('{{ otp_expiry_time|escapejs }}')"
+x-init="startTimer()"
+class="flex flex-col gap-2 items-center">
+  
+  <template x-if="!expired"> 
+    <div 
+    class="text-center flex items-center gap-4 justify-center">
+      {% comment %} timer {% endcomment %}
+      <span x-text="timeLeft" dir="ltr" class="text-lg font-bold"></span>
+
+      <span>
+      مانده تا دریافت مجدد کد
+      </span>
+    </div>
+  </template>
+
+  <template x-if="expired">
+  {% include 'elements/_Button1.html' with variant='link' text='ارسال مجدد' id="1" %}
+  </template>
+</div>
+
+<script type="text/javascript" defer>
+  // countDown timer
+  function countdownTimer(time) {
+    return {
+      timeLeft: '',
+      // reference to the timer (interval)
+      timer: null,
+      // use this for UI
+      expired: false,
+
+      startTimer() {
+        const endTime = new Date(time);
+        this.updateTimeLeft(endTime);
+
+        this.timer = setInterval(() => {
+          this.updateTimeLeft(endTime);
+        }, 1000);
+      },
+
+      updateTimeLeft(endTime) {
+        const now = new Date();
+        const diff = endTime - now;
+
+        // if the difference is less than or equal to 0 =: expired
+        if (diff <= 0) {
+          this.timeLeft = "00 : 00";
+          // clear the interval
+          clearInterval(this.timer);
+          // timer has expired
+          this.expired = true;
+
+          return;
+        }
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+        // after minutes, we get the remaining seconds
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+        // update the time left
+        this.timeLeft = `${minutes} : ${seconds}`;
+      }
+    }
+  }
+</script>

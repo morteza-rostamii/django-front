@@ -1,13 +1,13 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html class="light" dir="rtl" lang="fa" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}My Django Project{% endblock %}</title>
-
-  {% comment %} custom css {% endcomment %}
-  <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+  <title>{% block title %}
+  rise-group
+  {% endblock %}</title>
 
   {% comment %} custom js {% endcomment %}
 
@@ -32,6 +32,14 @@
             extend: {
               colors: {
                 fgray: '#f7f7f7',
+                black1: "#0E0D1B",
+                blue17: "#1a233e",
+                blue1: "#26BEFF",
+                "blue1-light": "#66CCFF",
+                "blue-background": "#0194FE",
+                blue2: "#151D37",
+
+                white1: "#E0E1E2",
               }
             },
         },
@@ -51,13 +59,28 @@
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
+  {% comment %} iconsax {% endcomment %}
+  <script src="https://cdn.jsdelivr.net/npm/iconsax-font-icon@1.1.0/fantasticonrc.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconsax-font-icon@1.1.0/dist/icons.min.css">
+  <link href="https://iconsax.gitlab.io/i/icons.css" rel="stylesheet">
 
+  {% comment %} font {% endcomment %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+
+  {% comment %} custom css {% endcomment %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
+<body class="bg-black1 text-white" >
+ 
+  {% block header %}
+  {% endblock %}
 
   <main>
-      {% block content %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
   </main>
     
 </body>

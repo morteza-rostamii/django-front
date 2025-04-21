@@ -1,0 +1,10 @@
+<li 
+
+class="hover:bg-blue2 transition-all rounded-md p-3 hover:text-blue1-light">
+  <a :href="item.href" class="flex items-center gap-2">
+    <span class="icon-bg flex items-center justify-center">
+    <i :class="`iconsax text-2xl `" x-bind:icon-name="item.icon" ></i>
+    </span>
+    <span x-text="item.title"></span>
+  </a>
+</li>

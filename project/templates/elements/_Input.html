@@ -1,0 +1,17 @@
+
+<div class="relative">
+  {% if icon %}
+    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+      {% include 'elements/_Icon.html' with icon_name=icon classes='text-gray-500' %}
+    </div>
+  {% endif %}
+  <input 
+  type="{{ type }}"
+  id="{{ id }}"
+  name="{{ name }}"
+  class="bg-gray-50 border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 {{ classes }} {% if icon %}!ps-12{% endif %}" placeholder="{{ placeholder }}" 
+  {% if required %}required{% endif %}
+  {% comment %} value="{{ value }}" {% endcomment %}
+  autocomplete="{{ autocomplete }}"
+  />
+</div>

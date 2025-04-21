@@ -1,0 +1,18 @@
+
+<a 
+href="{{ href }}" 
+class="font-medium text-blue1 dark:text-blue1 flex items-center gap-1 hover:text-blue1-light">
+
+  {% if iconRight %}
+    {% include 'elements/_Icon.html' with icon_name=iconRight classes='text-gray-500' %}
+  {% endif %}
+
+  <span class="hover:underline">
+  {{ text }}
+  </span>
+
+  {% if iconLeft %}
+    {% include 'elements/_Icon.html' with icon_name=iconLeft %}
+  {% endif %}
+
+</a>

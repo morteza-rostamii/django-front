@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # D:\coding\courses\django-tut
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     # my apps
     'core',
     'todo',
+    "rise_group",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -112,6 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Custom user model
+AUTH_USER_MODEL = "users.CustomUser"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -131,7 +137,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # static folder for apps
-STATICFILES_DIRS = [BASE_DIR / "core/static"]
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, 'project', 'static'), # project/static
+  os.path.join(BASE_DIR, 'rise_group', 'static'), # core/static
+  os.path.join(BASE_DIR, 'users', 'static'), # todo/static
+  BASE_DIR / "core/static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -24,9 +24,12 @@ urlpatterns = [
     # admin
     path('admin/', admin.site.urls),
 
-    # core
-    path('', include('core.urls')),
+    # rise_group
+    path('', include(('rise_group.urls', 'rise_group'), namespace='rise_group')),
 
     # todo
-    path('todo/', include('todo.urls')),
+    # path('todo/', include('todo.urls')),
+
+    # users
+    path('users/', include(('users.urls', 'users'), namespace='users')),
 ]

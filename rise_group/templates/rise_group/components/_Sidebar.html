@@ -1,0 +1,26 @@
+<aside
+x-data="Sidebar()"
+:class="sideOpen ? 'w-64' : 'w-20'"
+class="relative transition-all duration-300 ease-in-out h-full hidden md:flex sidebar"
+>
+  <button
+  @click="toggleSidebar"
+  class="absolute top-4 left-0 z-50"
+  >
+  {% include 'elements/_Icon.html' with icon_name='chevron-right' %}
+  </button>
+
+  {% include 'rise_group/components/_Sidemenu.html' %}
+</aside>
+
+<script type="text/javascript" defer>
+  function Sidebar() {
+    console.log('==', 'Sidebar()')
+    return {
+      sideOpen: true,
+      toggleSidebar() {
+        this.sideOpen = !this.sideOpen;
+      },
+    }
+  }
+</script>

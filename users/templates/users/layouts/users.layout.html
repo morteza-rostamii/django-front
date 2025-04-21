@@ -1,0 +1,38 @@
+
+{% extends 'root.layout.html' %}
+{% load static %}
+{% block title %}{{ title }} | Home{% endblock %}
+{% block header_title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div 
+style="
+background-image: url('{% static 'users/images/auth-background.png' %}');
+background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
+background-repeat: no-repeat;
+background-position: center center;
+"
+class="relative min-h-screen flex flex-col gap-3 p-4 items-center justify-center bg-transparent">
+  
+  <header class="flex items-center justify-between mb-4 flex-col gap-3 #border-2 w-full">
+    <img 
+    src="{% static 'users/images/Logo.png' %}" 
+    alt="Logo" 
+    class="w-[150px] ml-auto order-1 md:order-2 md:m-auto md:w-[300px]"
+    />
+    
+    <span class="mr-auto order-2 md:order-1 ">
+    {% url 'rise_group:index-view' as rise_group_index_href %}
+    {% include 'elements/_Link.html' with href=rise_group_index_href text="بازگشت به صفحه اصلی" iconLeft='chevron-left' %}
+    </span>
+  </header>
+  
+  
+  {% block auth_content %}
+  {% endblock %}
+
+  {% comment %} background image {% endcomment %}
+  {% comment %} <img src="{% static 'users/images/auth-bg.png' %}" alt="auth-bg" class="absolute top-0 bottom-0 left-0 right-0 -z-10 w-full h-full" /> {% endcomment %}
+</div>
+{% endblock %}
+

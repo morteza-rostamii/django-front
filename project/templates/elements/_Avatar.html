@@ -1,0 +1,22 @@
+<span
+  x-data="Avatar()"
+  :class="{ 'flex items-center justify-center': !src }"
+  class="border-2 w-14 h-14 border-gray-500 block rounded-full"
+  >
+  <template x-if="!src">
+    {% include 'elements/_Icon.html' with icon_name='user-2' classes="text-4xl text-blue-background " %}
+  </template>
+
+  <template x-if="src">
+  <img src="{{ src }} alt="{{ alt }}" class="w-full h-full rounded-full" />
+  </template>
+</span>
+
+<script type="text/javascript" defer>
+  function Avatar() {
+    return {
+      src: '{{ src }}',
+      alt: '{{ alt }}',
+    }
+  }
+</script>
